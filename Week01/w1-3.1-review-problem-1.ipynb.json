@@ -1,0 +1,177 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "Name:\n",
+    "People you worked with (if any):\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Review Problem 1\n",
+    "\n",
+    "For this problem you will be writing a function that accepts a dictionary and operates on it.\n",
+    "\n",
+    "Define a function:\n",
+    "\n",
+    "- Accept 1 argument, which is a dictionary.\n",
+    "- Print the dictionary.\n",
+    "- Iterate through the key:value pairs of the dictionary.\n",
+    "    - For pairs where the key starts with a lowercase vowel, change the value to \"vowel\".\n",
+    "    - For pairs where the key starts with a lowercase consonant, change the value to \"consonant\".\n",
+    "    - Remove all other pairs from the dictionary.\n",
+    "- Print the modified dictionary.\n",
+    "- Return the modified dictionary.\n",
+    "\n",
+    "Notes/Hints:\n",
+    " \n",
+    "- ```string.ascii_lowercase``` is a string of all the lowercase letters in the alphabet. to use it you need to **import string** at the beginning of your script.\n",
+    "- You can check if a character is in a string with **in**. \n",
+    "    - ex: \n",
+    "        ```python\n",
+    "        if ch in st:\n",
+    "        ```\n",
+    "- You can create a new dictionary to store the modified return values or operate on the input dictionary.\n",
+    "- You will likely need to check types in this using the ```type()``` python function:\n",
+    "    ```python\n",
+    "    type(1) == int\n",
+    "    type(1.2) == float\n",
+    "    type('ab') == str\n",
+    "    type((1,2)) == tuple\n",
+    "    type([3,2]) == list\n",
+    "    type({'a':'b'}) == dict\n",
+    "    ```"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "input_dict = {'list':[1,2,3,4], 'tuple':('cat', 'dog'), 'integer':1, \n",
+    "              'float':99.99, 1:'integer', 2:'integer_2', 'Uppercase_string':'ABCD',\n",
+    "              'CHARACTER':'C'}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'float': 'consonant',\n",
+       " 'integer': 'vowel',\n",
+       " 'list': 'consonant',\n",
+       " 'tuple': 'consonant'}"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "def myfunc(mydict):\n",
+    "    \"\"\"creates a function to:\n",
+    "        change dict value to consonant if first letter of key is lowercase and consonant, \n",
+    "        change dict valie to vowel if first letter of key is lowercase and vowel,\n",
+    "        remove the key/value pair if neither above is true\"\"\"\n",
+    "    \n",
+    "    newdict = {} \n",
+    "    \"\"\"defines dict to store dict to return\"\"\"\n",
+    "    \n",
+    "    \n",
+    "    for thekey in mydict:\n",
+    "        if type(thekey) != str:\n",
+    "            continue\n",
+    "        \"\"\"iterates through each key in the given dict and determines if its a string. if not string, moves to next\n",
+    "        key\"\"\"\n",
+    "        \n",
+    "        firstletter = thekey[0]\n",
+    "        '''stores the first letter of the key'''\n",
+    "        \n",
+    "        if firstletter.islower() == True and firstletter in \"aeiou\":\n",
+    "            mydict[thekey] = \"vowel\"\n",
+    "            newdict.update({thekey:mydict[thekey]})\n",
+    "        '''if first letter of key is lowercase and vowel, changes value to \"vowel\" and adds the pair to newdict'''\n",
+    "            \n",
+    "            \n",
+    "        elif firstletter.islower() == True and firstletter not in \"aeiou\":\n",
+    "            mydict[thekey] = \"consonant\"\n",
+    "            newdict.update({thekey:mydict[thekey]})\n",
+    "        '''if first letter of key is lowercase and consonant, changes value to \"consonant\" and adds the pair to newdict'''\n",
+    "        \n",
+    "    return newdict\n",
+    "    '''returns final dict'''\n",
+    "\n",
+    "\n",
+    " \n",
+    "input_dict = {'list':[1,2,3,4], 'tuple':('cat', 'dog'), 'integer':1, \n",
+    "              'float':99.99, 1:'integer', 2:'integer_2', 'Uppercase_string':'ABCD',\n",
+    "              'CHARACTER':'C'}    \n",
+    "\n",
+    "myfunc(input_dict)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 2",
+   "language": "python",
+   "name": "python2"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 2
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython2",
+   "version": "2.7.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 0
+}
